@@ -4,12 +4,16 @@ const https = require('https');
 const ws = require('ws');
 const WebSocketServer = ws.Server;
 const fs = require('fs');
+const chalk = require('chalk');
+const log = console.log;
 
 function createWebsocketServer(unsecureFlag) {
   var options;
 
   if (unsecureFlag) {
-    options = {port: LISTEN_PORT};
+    options = {
+      port: LISTEN_PORT
+    };
   } else {
     const httpsServer = https.createServer({
       cert: fs.readFileSync('conf/certificate.pem'),
@@ -17,7 +21,9 @@ function createWebsocketServer(unsecureFlag) {
       port: LISTEN_PORT
     });
     httpsServer.listen(LISTEN_PORT);
-    options = {server: httpsServer};
+    options = {
+      server: httpsServer
+    };
   }
   const wss = new WebSocketServer(options);
 
@@ -33,11 +39,11 @@ const wss = createWebsocketServer(unsecureFlag);
 const udpClient = dgram.createSocket('udp4');
 var websocket_connection = null;
 
-console.log('WS-UDP proxy v0.0.2');
-console.log('> Listen: ' + LISTEN_PORT);
-console.log('> Target: ' + SERVER_IP + ':' + SERVER_PORT);
+log(chalk.magentaBright('WS-UDP proxy v0.0.2'));
+log('> Listen: ' + LISTEN_PORT);
+log('> Target: ' + SERVER_IP + ':' + SERVER_PORT);
 if (unsecureFlag) {
-  console.log('-- Warning! Unsecure!');
+  log(chalk.yellow('-- Warning! Unsecure!'));
 }
 udpClient.on('message', (message, rinfo) => {
   // console.log("UDP Received:", message);
