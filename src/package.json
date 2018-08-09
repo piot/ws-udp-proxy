@@ -11,7 +11,7 @@
     "main.js"
   ],
   "dependencies": {
-    "ws": "^4.0.0"
+    "ws": "^6.0.0"
   },
   "license": "MIT"
 }
