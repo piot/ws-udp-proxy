@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node main.js"
   },
+  "files": ["main.js"],
   "dependencies": {
     "ws": "^4.0.0"
   }
