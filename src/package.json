@@ -1,6 +1,6 @@
 {
   "name": "ws-udp-proxy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Websocket - UDP proxy",
   "author": "Peter Bjorklund <piot@hotmail.com>",
   "main": "main.js",
